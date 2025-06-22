@@ -1,21 +1,18 @@
-
 function criaCard(filme) {
   const card = document.createElement("div");
   card.classList.add("card");
 
-    const titulo = document.createElement("div");
-    titulo.classList.add("titulo-card");
-    const tituloOriginal = filme.titulo || "Sem título";
-    const tituloCortado = tituloOriginal.length > 30 
-    ? tituloOriginal.slice(0, 27) + "..." 
-    : tituloOriginal;
-    titulo.textContent = tituloCortado;
-    card.appendChild(titulo);
+  const titulo = document.createElement("div");
+  titulo.classList.add("titulo-card");
+  const tituloOriginal = filme.titulo || "Sem título";
+  const tituloCortado = tituloOriginal.length > 30 ? tituloOriginal.slice(0, 27) + "..." : tituloOriginal;
+  titulo.textContent = tituloCortado;
+  card.appendChild(titulo);
 
   const imagemDiv = document.createElement("div");
   imagemDiv.classList.add("imagem-card");
   const img = document.createElement("img");
-  img.src = filme.imagem || "Imagens/default.jpg";  
+  img.src = filme.imagem || "Imagens/default.jpg";
   img.alt = 'Poster do Filme';
   imagemDiv.appendChild(img);
   card.appendChild(imagemDiv);
@@ -28,7 +25,6 @@ function criaCard(filme) {
 
   const botoesDiv = document.createElement("div");
   botoesDiv.classList.add("buttons-card");
-
 
   const botaosobre = document.createElement("button");
   botaosobre.classList.add("mais-info");
@@ -51,23 +47,23 @@ function criaCard(filme) {
   return card;
 }
 
-
 function mostrarFilmes() {
-  const filmes = getFilmes();  
+  const filmes = getFilmes();
   const container = document.querySelector(".cards");
-  container.innerHTML = "";    
+  container.innerHTML = "";
 
   if (!filmes || filmes.length === 0) {
     const aviso = document.createElement("div");
-    aviso.classList.add("alert", "alert-warning", "text-center");
+    aviso.classList.add("mensagem-vazia");
     aviso.textContent = "Nenhum filme cadastrado.";
     container.appendChild(aviso);
     return;
   }
-    for (let i = 0; i < filmes.length; i++) {
+
+  for (let i = 0; i < filmes.length; i++) {
     const card = criaCard(filmes[i]);
     container.appendChild(card);
-    }
+  }
 }
 
 window.addEventListener("DOMContentLoaded", mostrarFilmes);
