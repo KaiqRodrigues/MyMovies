@@ -13,7 +13,7 @@
 
 .cards {
   flex-grow: 1;
-  min-height: 70vh;
+  min-height: 10vh;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
   justify-content: center;
